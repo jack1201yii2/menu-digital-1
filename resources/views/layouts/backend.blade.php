@@ -315,6 +315,12 @@
                             <span class="menu-title" data-i18n="Email">Restaurant's</span>
                         </a>
                     </li>
+                    <li class=" nav-item">
+                        <a href="{{ route('restaurants.index') }}">
+                            <i class="fa fa-cutlery"></i>
+                            <span class="menu-title" data-i18n="Email">Restaurant's</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
