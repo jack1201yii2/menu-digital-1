@@ -1,83 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('content')
-<div class="container">
+<section id="dashboard-analytics">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    @if (Auth::user()->branch_office_id == null)
-                        @if (Auth::user()->restaurantUsers->count() > 0)
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>RFC</th>
-                                        <th>Usuarios</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (Auth::user()->restaurantUsers as $restaurant)
-                                        <tr>
-                                            <td>{{ $restaurant->restaurant->name_restaurant }}</td>
-                                            <td>{{ $restaurant->restaurant->rfc }}</td>
-                                            <td>{{ $restaurant->restaurant->restaurantUsers->count() }}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-success btn-round"><i class="fa fa-eye"></i></button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @else
-                            <h2 style="text-transform: uppercase;">Soy el fuck dueño : {{Auth::user()->user_restaurant_name}} </h2>
-                            <div class="col-lg-12" align="right">
-                                <button class="btn btn-success">Agregar restaurant</button>
-                                <button class="btn btn-info">Agregar usuario</button>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="card bg-analytics text-white">
+                <div class="card-content">
+                    <div class="card-body text-center">
+                        <img src="../../../app-assets/images/elements/decore-left.png" class="img-left" alt="card-img-left">
+                        <img src="../../../app-assets/images/elements/decore-right.png" class="img-right" alt="card-img-right">
+                        <div class="avatar avatar-xl bg-primary shadow mt-0">
+                            <div class="avatar-content">
+                                <i class="feather icon-award white font-large-1"></i>
                             </div>
-                            <br>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>RFC</th>
-                                        <th>Usuarios</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($restaurants as $restaurant)
-                                        <tr>
-                                            <td>{{ $restaurant->name_restaurant }}</td>
-                                            <td>{{ $restaurant->rfc }}</td>
-                                            <td>{{ $restaurant->restaurantUsers->count() }}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button>
-                                                <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
-                    @else
-                        <strong>Bienvenido a la sucursal "{{ Auth::user()->branchOffice->branch_office_name}} "</strong>
-                    @endif
-                    <br>
-                    You are logged in!
+                        </div>
+                        <div class="text-center">
+                            <h1 class="mb-2 text-white">Bienvenido al sistema {{Auth::user()->user_name}},</h1>
+                            {{-- <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p> --}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

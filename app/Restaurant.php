@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\FoodType;
 use App\RestaurantUser;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Restaurant extends Model
 {
     protected $fillable = [
     	'id',
-    	'name_restaurant',
+    	'restaurant_name',
     	'rfc'
     ];
 
@@ -23,5 +24,8 @@ class Restaurant extends Model
         return $this->hasMany(RestaurantUser::class);
     }
 
-    
+    public function foodTypes()
+    {
+        return $this->hasMany(FoodType::class);
+    }
 }
